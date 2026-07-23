@@ -30,21 +30,34 @@ function storeValue(n) {
 
 function operateOn(value){  
     if (Continue === 2) {
-        operator = value;
-        displayValue(value);   
-        num1 = parseInt(currentNum);
+        const accepted = multipleOperators(value);
+        if (accepted) {
+            num1 = parseInt(currentNum);
         //cannot put return before naything since it exits early 
         //error let currentNum = null since will only look at enclosed n currentNum wld not be initialised yet 
-        currentNum = "";
+            currentNum = "";
+        }
         Continue -= 1
     }
     else {
         storeValue(value);
         displayValue(value);
-        }} 
+        } 
+}
+    
 
-// error debug 1. 11 = 11 (num1 not stored since + is never clicked) 
-//2. when two operators are put in throw an error 3. cannot divide by zero
+function multipleOperators(value) {
+    if (operator === undefined){
+        operator = value;
+        displayValue(value); 
+        return true
+    } else {
+        alert("Error: multiple operators");
+        return false
+    }
+}
+// error debug 1. 11 = 11 (num1 not stored since + is never clicked) --
+//2. when two operators are put in throw an error - it must not display - it must alert - it will not be stored as operator 3. cannot divide by zero
 //4. terminate after the first one 
 
 
@@ -137,5 +150,4 @@ function divide(){
 
 
 
-//solve the errors 
-//finish the 
+ 
