@@ -42,13 +42,17 @@ function operateOn(value){
         storeValue(value);
         displayValue(value);
         }} 
-       
+
+// error debug 1. 11 = 11 (num1 not stored since + is never clicked) 
+//2. when two operators are put in throw an error 3. cannot divide by zero
+//4. terminate after the first one 
+
 
 function equalsTo(value) {
     if (Continue === 3) {
         displayValue(value);
         num2 = parseInt(currentNum);
-        calc(num1 , num2); // see if num1 can be put in here cant 
+        calc(num1 , num2);
     } else {
         operateOn(value)
     }
@@ -56,9 +60,10 @@ function equalsTo(value) {
 }
 
 function calc(num1 , num2){
-    if (operator === "+") {
+    if (operator === "+" || operator === undefined) {
         displayValue(add(num1 , num2))
     }
+
 }
 
 
@@ -112,6 +117,9 @@ Equal.addEventListener ('click' , function() {equalsTo('=')} )
 
 
 function add(num1 , num2){
+    if (operator === undefined){
+        num1 = 0
+    }
     return(num1 + num2)
 }
 
@@ -127,3 +135,7 @@ function divide(){
     return(num1 / num2)
 }
 
+
+
+//solve the errors 
+//finish the 
