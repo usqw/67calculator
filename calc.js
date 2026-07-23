@@ -73,10 +73,28 @@ function equalsTo(value) {
 }
 
 function calc(num1 , num2){
-    if (operator === "+" || operator === undefined) {
-        displayValue(add(num1 , num2))
+    if (operator === "+"|| operator === undefined){
+        displayValue (add(num1 , num2))
     }
-
+    if (operator === "-"){
+        displayValue (subtract(num1 , num2))
+    }
+    if (operator === "*"){
+        displayValue (multiply(num1 , num2))
+    }
+    if (operator === "/"){
+        if (divide(num1 , num2) === Infinity) {
+            alert("Error: Cannot divide by zero!")
+            currentNum = "";
+            num1 = undefined;
+            num2 = undefined;
+            operator = undefined;
+            Continue = 1;
+            resultDiv.innerHTML = "";
+        } else {
+            displayValue (divide(num1 , num2))
+        }
+    }
 }
 
 
@@ -113,19 +131,50 @@ One.addEventListener ('click' , function() {equalsTo(1)} )
 const Two = document.querySelector('.Two')
 Two.addEventListener ('click' , function() {equalsTo(2)} )
 
+const Three = document.querySelector('.Three')
+Three.addEventListener ('click' , function() {equalsTo(3)} )
+
+const Four = document.querySelector('.Four')
+Four.addEventListener ('click' , function() {equalsTo(4)} )
+
+const Five = document.querySelector('.Five')
+Five.addEventListener ('click' , function() {equalsTo(5)} )
+
 const Six = document.querySelector('.Six')
 Six.addEventListener ('click' , function() {equalsTo(6)} )
 
 const Seven = document.querySelector('.Seven')
 Seven.addEventListener ('click' , function() {equalsTo(7)} )
 
+const Eight = document.querySelector('.Eight')
+Two.addEventListener ('click' , function() {equalsTo(8)} )
+
+const Nine = document.querySelector('.Nine')
+Nine.addEventListener ('click' , function() {equalsTo(9)} )
+
+const Zero = document.querySelector('.Zero')
+Zero.addEventListener ('click' , function() {equalsTo(0)} )
+
 const Plus = document.querySelector('.Plus')
 Plus.addEventListener ('click' , () => {Continue = 2})
 Plus.addEventListener ('click' , function() {equalsTo('+')} )
 
+const Subtract = document.querySelector('.Subtract')
+Subtract.addEventListener ('click' , () => {Continue = 2})
+Subtract.addEventListener ('click' , function() {equalsTo('-')} )
+
+const Multiply = document.querySelector('.Multiply')
+Multiply.addEventListener ('click' , () => {Continue = 2})
+Multiply.addEventListener ('click' , function() {equalsTo('*')} )
+
+const Divide = document.querySelector('.Divide')
+Divide.addEventListener ('click' , () => {Continue = 2})
+Divide.addEventListener ('click' , function() {equalsTo('/')} )
+
 const Equal = document.querySelector('.Equal')
 Equal.addEventListener ('click' , () => {Continue = 3})
 Equal.addEventListener ('click' , function() {equalsTo('=')} )
+
 
 
 
@@ -136,15 +185,15 @@ function add(num1 , num2){
     return(num1 + num2)
 }
 
-function subtract(){
+function subtract(num1 , num2){
     return(num1 - num2)
 }
 
-function multiply(){
+function multiply(num1 , num2){
     return(num1 * num2)
 }
 
-function divide(){
+function divide(num1 , num2){
     return(num1 / num2)
 }
 
